@@ -9,8 +9,13 @@ from sklearn.metrics import classification_report
 from sklearn.preprocessing import MinMaxScaler
 
 # == DATA LOADING ================================================================================
+# in local machine
 dataset_csv = "weatherAUS"
 dataset = pd.read_csv(f"{dataset_csv}.csv")
+
+# in colab from github
+# csv_url = 'https://github.com/stareginio/group-3-project-cs-elec-1a/blob/main/weatherAUS.csv?raw=true'
+# dataset = pd.read_csv(csv_url)
 
 # print("shape:")
 # print(dataset.shape)
@@ -119,12 +124,20 @@ def cleanData(set):
 
 # combine X_train and y_train for data cleaning
 train_set = pd.concat([X_train,y_train], axis=1)
-
 print("\n---- Train set after concatenating X_train and y_train")
 print(train_set)
 
 # call the function for data cleaning
-train_set = cleanData(train_set)
+cleaned_train_set = cleanData(train_set)
 print("\n---- After data cleaning for training set:")
-print(train_set)
+print(cleaned_train_set)
 
+# split X_train and y_train
+cleaned_X_train = cleaned_train_set.iloc[:,:-1]                   # all columns except the last, RainTomorrow
+cleaned_y_train = cleaned_train_set['RainTomorrow'].to_frame()    # RainTomorrow
+print("X_train:")
+print(cleaned_X_train)
+print("y_train:")
+print(cleaned_y_train)
+
+# == NAIVE BAYES =================================================================================
