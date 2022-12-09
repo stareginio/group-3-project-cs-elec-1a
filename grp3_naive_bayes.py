@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import MinMaxScaler
 
-# == DATA LOADING ============================================================================
+# == DATA LOADING ================================================================================
 dataset_csv = "weatherAUS"
 dataset = pd.read_csv(f"{dataset_csv}.csv")
 
@@ -18,7 +18,7 @@ dataset = pd.read_csv(f"{dataset_csv}.csv")
 X = dataset.iloc[:,:-1]     # all columns except the last, RainTomorrow
 y = dataset['RainTomorrow'].to_frame()  # RainTomorrow
 
-# == DATA VISUALIZATION ======================================================================
+# == DATA VISUALIZATION ==========================================================================
 # print("X:")
 # print(X)
 # print("\ny:")
@@ -26,7 +26,7 @@ y = dataset['RainTomorrow'].to_frame()  # RainTomorrow
 
 # NTS: plot?
 
-# == DATA SPLITTING ==========================================================================
+# == DATA SPLITTING ==============================================================================
 # set random_state for reproducibility
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2, random_state=41)
 
@@ -42,7 +42,7 @@ print(X_test.shape)
 print("y_test shape:")
 print(y_test.shape)
 
-# == DATA CLEANING ===========================================================================
+# == DATA CLEANING ===============================================================================
 # function for data cleaning
 def cleanData(set):
     # -- drop variables that are irrelevant and has many NA values -------------------------------
@@ -127,3 +127,4 @@ print(train_set)
 train_set = cleanData(train_set)
 print("\n---- After data cleaning for training set:")
 print(train_set)
+
