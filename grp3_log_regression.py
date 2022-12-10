@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-# import seaborn as sns
 from scipy import stats
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
@@ -23,13 +22,10 @@ dataset = pd.read_csv(f"{dataset_csv}.csv")
 X = dataset.iloc[:,:-1]     # all columns except the last, RainTomorrow
 y = dataset['RainTomorrow'].to_frame()  # RainTomorrow
 
-# == DATA VISUALIZATION ==========================================================================
 # print("X:")
 # print(X)
 # print("\ny:")
 # print(y)
-
-# NTS: plot?
 
 # == DATA SPLITTING ==============================================================================
 # set random_state for reproducibility
